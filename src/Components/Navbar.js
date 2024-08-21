@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
   return (
+    <>
     <div>
- <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">TextMod</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +29,7 @@ export default function Navbar(props) {
   </div>
 </nav>
 </div>
+</>
   )
 } 
 

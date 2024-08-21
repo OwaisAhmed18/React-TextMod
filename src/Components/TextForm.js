@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
 export default function TextForm(props) {
 
+
+const [text, setText] = useState("")
+
 //Uppercase    
 const handleUpClick = ()=>{
 let newText = text.toUpperCase();
@@ -66,16 +69,17 @@ const handleOnChange=(event)=>{
 setText(event.target.value);
 }
 
-const [text, setText] = useState("")
-
+let myStyle = {
+    color : props.mode === "dark"? "white" : "black",
+    backgroundColor : props.mode === "dark"? "#1b263b" : "white",
+}
 
 return (
 <>
-{document.title = "TextMod - Home"}
 <div className="container">
 <h1>{props.heading}</h1>
 <div className="mb-2">
-<textarea className="form-control" value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
+<textarea className="form-control" value={text} onChange={handleOnChange} id="mybox" rows="8" style={myStyle}></textarea>
 </div>
 <button className="btn btn-primary m-1" onClick={handleUpClick}>Convert to Uppercase</button>
 <button className="btn btn-primary m-1" onClick={handleLoClick}>Convert to lowercase</button>
@@ -86,8 +90,8 @@ return (
 
 <div className="container my-3" >
 <h1>Your Text Summary</h1>
-<p>{text.split(" ").length-1} words and {text.length} characters</p>
-<p>{0.008*text.split(" ").length} Minutes to read</p>
+<p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+<p>{0.008*text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
 <h2>Preview</h2>
 <p>{text}</p>
 </div>

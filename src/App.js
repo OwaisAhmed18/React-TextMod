@@ -17,6 +17,7 @@ function App() {
 const [mode, setMode] = useState('light');
 const [alert, setAlert] = useState(null); 
 
+
 const ShowAlert=(message, type)=>{
   setAlert({
     message : message,
@@ -32,7 +33,7 @@ const ShowAlert=(message, type)=>{
 const toggleMode = () => {
   if (mode === 'light') {
     setMode('dark');
-    document.body.style.backgroundColor = '#6c757d'; // Change background color for dark mode
+    document.body.style.backgroundColor = '#0d1b2a'; // Change background color for dark mode
     document.body.style.color = 'white'; // Light text color
     ShowAlert("Darkmode enabled","success")
   } else {
@@ -41,9 +42,8 @@ const toggleMode = () => {
     document.body.style.color = 'black'; // Dark text color
     ShowAlert("Darkmode disabled","success")
   }
+
 };
-
-
   return(
     <>
     <Router>
@@ -51,15 +51,13 @@ const toggleMode = () => {
       <Alert alert={alert} />
       <div className="container my-3">
         <Routes>
-          <Route exact path='/about' element={<About />} />
+          <Route exact path='/about' element={<About mode={mode}/>} />
           <Route exact path='/' element={<TextForm heading="Enter Text To Analyze" showAlert={ShowAlert} mode={mode}/>}></Route>
         </Routes>
       </div>
     </Router>
   </>
   );
-  
 }
 
 export default App;
-
